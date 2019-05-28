@@ -20,7 +20,20 @@ mongoose
   );
 
 const app = express();
+
 app.use(cors());
+app.use((err, req, res, next) => {
+  console.error(err);
+  return res.send({ error: err.message });
+});
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Voting App API");
+});
+app.get("*", function(req, res) {
+  res.status(404);
+  res.send("Sorry the page you're looking for does not exist!");
+});
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
