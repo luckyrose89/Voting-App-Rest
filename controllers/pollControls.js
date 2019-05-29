@@ -78,3 +78,12 @@ const addOption = async (req, res, next) => {
     return next(err);
   }
 };
+
+exports = module.exports = {
+  getAll,
+  addPoll,
+  getPoll,
+  deletePoll,
+  addOption,
+  upvoteOption
+};
