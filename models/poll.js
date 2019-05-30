@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const pollSchema = new Schema({
-  question: String,
+  question: { type: String, required: true },
   answer: [
     {
-      option: String,
-      votes: Number
+      option: { type: String, required: true },
+      votes: { type: Number }
     }
   ],
   user: Schema.Types.ObjectId
