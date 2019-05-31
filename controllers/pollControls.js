@@ -4,7 +4,7 @@ const Poll = require("../models/poll");
 
 // Poll Control Functions
 //Get All Polls
-const getAll = async (res, req, next) => {
+const getAll = async (req, res, next) => {
   try {
     const polls = await Poll.find();
     return res.status(200).json(polls);
@@ -14,7 +14,7 @@ const getAll = async (res, req, next) => {
 };
 
 //Create a Poll
-const addPoll = async (res, req, next) => {
+const addPoll = async (req, res, next) => {
   const poll = new Poll(req.body);
   try {
     const newPoll = await poll.save();
@@ -26,7 +26,7 @@ const addPoll = async (res, req, next) => {
 };
 
 // Get a Poll
-const getPoll = async (res, req, next) => {
+const getPoll = async (req, res, next) => {
   try {
     const poll = await Poll.findById({ _id: req.params.pollId });
     return res.status(200).json(poll);
